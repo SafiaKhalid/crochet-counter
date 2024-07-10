@@ -3,16 +3,16 @@ import React, {useState} from "react";
 const Counter = () => {
     const [value, setValue] = useState(0)
 
-    const decrease = () => {
-        console.log('decrease')
+    const decrease = () => {       
+        setValue(value-1)
     }
     
     const increase = () => {
-        console.log('increase')
+        setValue(value+1)
     }
     
     const reset = () => {
-        console.log('reset')
+        setValue(0)
     }
 
     return <section>counter: {value}
