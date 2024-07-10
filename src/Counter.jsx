@@ -1,21 +1,19 @@
-import React, {useState} from "react";
+import React from "react";
 
-const Counter = () => {
-    const [value, setValue] = useState(0)
-
+const Counter = ({typeName, type, setType}) => {    
     const decrease = () => {       
-        setValue(value-1)
+        setType(type-1)
     }
     
     const increase = () => {
-        setValue(value+1)
+        setType(type+1)
     }
     
     const reset = () => {
-        setValue(0)
+        setType(0)
     }
 
-    return <section>counter: {value}
+    return <section>{typeName}: {type}
         <button className="counter-btn" onClick={decrease}>-</button>
         <button className="counter-btn" onClick={increase}>+</button>
         <button className="reset-btn" onClick={reset}>reset</button>
