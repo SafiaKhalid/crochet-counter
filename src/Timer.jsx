@@ -1,11 +1,24 @@
-import React, {useState} from "react";
+import React, {useState, useEffect, useRef} from "react";
+
 
 const Timer = () => {
     const [time, setTime] = useState(0)
+    const [timerStart, setTimerStart] = useState(false)
+    let timerInterval
 
     const startTimer = () => {
-        console.log('start');
+        timerInterval = setInterval(() => {
+            setTime(time+1)
+        },1000)
     }
+
+    useEffect(() => {
+        if (timerStart) {
+            startTimer()
+            return () => clearInterval(timerInterval)
+        }    
+    }, [timerStart, time])
+    
     
     const pauseTimer = () => {
         console.log('pause');
@@ -15,7 +28,7 @@ const Timer = () => {
     }
 
     return <section className="timer">timer: {time}
-        <button className="function-btn" onClick={startTimer}>start</button>
+        <button className="function-btn" onClick={() => setTimerStart(!timerStart)}>start</button>
         <button className="function-btn" onClick={pauseTimer}>pause</button>
         <button className="function-btn" onClick={resetTimer}>reset</button>
     </section>
