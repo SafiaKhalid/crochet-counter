@@ -19,7 +19,7 @@ function App() {
       {/* <button className='option-btn'>stitches</button>
       <button className='option-btn'>rows</button>
       <button className='option-btn'>timer</button> */}
-      <OptionButton typeName='stitches'/>
+      <OptionButton typeName='stitches' />
       <OptionButton typeName='rows'/>
       <OptionButton typeName='timer'/>
       <Counter typeName='stitches' type={stitches} setType={setStitches}/>
