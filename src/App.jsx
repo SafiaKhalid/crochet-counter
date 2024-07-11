@@ -1,23 +1,31 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Counter from './Counter'
 import Timer from './Timer'
 
-function App() {
-  const [stitches, setStitches] = useState(0)
-  const [rows, setRows] = useState(0)
-  const [displayOptions, setDisplayOptions] = useState({
+function App() {  
+  const [stitches, setStitches] = useState(localStorage.getItem('localStitches') !== null ? Number(localStorage.getItem('localStitches')) : 0)
+  const [rows, setRows] = useState(localStorage.getItem('localRows') !== null ? Number(localStorage.getItem('localRows')) : 0)
+  const [time, setTime] = useState(localStorage.getItem('localTime') !== null ? Number(localStorage.getItem('localTime')) : 0)
+
+
+
+  const [displayOptions, setDisplayOptions] = useState(localStorage.getItem('localDisplayOptions') !== null ? JSON.parse(localStorage.getItem('localDisplayOptions')) : {
     stitches:true,
     rows:true,
     timer:true
   })
   
   const setLocalStorage = () => {
-    localStorage.setItem(localStitches,stitches)
-    localStorage.setItem(localRows,rows)
-    localStorage.setItem(localStitches,stitches)
+    localStorage.setItem('localStitches',JSON.stringify(stitches))
+    localStorage.setItem('localRows',JSON.stringify(rows))
+    localStorage.setItem('localTime',JSON.stringify(time))
+    localStorage.setItem('localDisplayOptions',JSON.stringify(displayOptions))
   }
 
+  useEffect(() => {
+    setLocalStorage()    
+  },[stitches,rows,time,displayOptions])
 
   return (
     <>
@@ -29,7 +37,7 @@ function App() {
 
       {displayOptions.stitches && <Counter typeName='stitches' type={stitches} setType={setStitches}/>}
       {displayOptions.rows && <Counter typeName='rows' type={rows} setType={setRows}/>}
-      {displayOptions.timer && <Timer/>}
+      {displayOptions.timer && <Timer time={time} setTime={setTime}/>}
     </>
   )
 }

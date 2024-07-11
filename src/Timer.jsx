@@ -1,10 +1,8 @@
 import React, {useState, useEffect} from "react";
 
 
-const Timer = () => {
-    const [time, setTime] = useState(0)
-    const [timerStart, setTimerStart] = useState(false)
-    
+const Timer = ({time, setTime}) => {    
+    const [timerStart, setTimerStart] = useState(false)    
     let timerInterval
 
     const startTimer = () => {
@@ -13,17 +11,17 @@ const Timer = () => {
         },1000)
     }
 
+    const resetTimer = () => {    
+        setTimerStart(false)
+        setTime(0)
+    }
+
     useEffect(() => {
         if (timerStart) {
             startTimer()
             return () => clearInterval(timerInterval)
         }    
-    }, [timerStart, time])
-    
-    const resetTimer = () => {    
-        setTimerStart(false)
-        setTime(0)
-    }
+    }, [timerStart, time])    
 
     return <section className="timer">
         <p>{Math.floor(time /3600)} h</p>    
