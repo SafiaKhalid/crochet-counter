@@ -2,8 +2,9 @@ import React, {useState, useEffect, useRef} from "react";
 
 
 const Timer = () => {
-    const [time, setTime] = useState(90001)
+    const [time, setTime] = useState(0)
     const [timerStart, setTimerStart] = useState(false)
+    
     let timerInterval
 
     const startTimer = () => {
@@ -24,10 +25,10 @@ const Timer = () => {
         setTime(0)
     }
 
-    return <section className="timer">timer: {time}    
-    <p>hours: {Math.floor(time /3600)}</p>    
-    <p>minutes: {Math.floor((time%3600)/60)}</p>    
-    <p>seconds: {Math.floor(time %60) }</p>
+    return <section className="timer">
+        <p>{Math.floor(time /3600)} h</p>    
+        <p>{Math.floor((time%3600)/60)} m</p>    
+        <p>{Math.floor(time %60)} s</p>
         <button className="function-btn" onClick={() => setTimerStart(!timerStart)}>{timerStart? 'pause':'start'}</button>        
         <button className="function-btn" onClick={resetTimer}>reset</button>
     </section>
