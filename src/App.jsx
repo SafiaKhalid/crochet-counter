@@ -12,6 +12,12 @@ function App() {
     timer:true
   })
   
+  const setLocalStorage = () => {
+    localStorage.setItem(localStitches,stitches)
+    localStorage.setItem(localRows,rows)
+    localStorage.setItem(localStitches,stitches)
+  }
+
 
   return (
     <>
