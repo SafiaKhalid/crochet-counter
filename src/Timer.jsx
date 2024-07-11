@@ -25,10 +25,10 @@ const Timer = () => {
     }
 
     return <section className="timer">timer: {time}
-    {/* <p>days: {Math.floor(time / (1000 * 60 * 60 * 24))}</p>
+    <p>days: {Math.floor(time / (1000 * 60 * 60 * 24))}</p>
     <p>hours: {Math.floor((time % (1000 * 60 * 60 *24)) / (1000 * 60 * 60))}</p>
-    <p>minutes: {Math.floor((time % (1000 * 60 * 60)) / (1000 * 60))}</p>
-    <p>seconds: {Math.floor((time % (1000 * 60)) / 1000)}</p> */}
+    <p>minutes: {Math.floor((time % (1000 * 60 * 60)) / (1000 * 60))}</p>    
+    <p>seconds: {Math.floor(time %60) }</p>
         <button className="function-btn" onClick={() => setTimerStart(!timerStart)}>{timerStart? 'pause':'start'}</button>        
         <button className="function-btn" onClick={resetTimer}>reset</button>
     </section>
