@@ -12,16 +12,19 @@ function App() {
     rows:true,
     timer:true
   })
+  
 
   return (
     <>
-      <h1>Crochet Counter</h1>
-      <OptionButton typeName='stitches' type={displayOptions} setType={setDisplayOptions}/>
-      <OptionButton typeName='rows' type={displayOptions} setType={setDisplayOptions}/>
-      <OptionButton typeName='timer' type={displayOptions} setType={setDisplayOptions}/>
-      <Counter typeName='stitches' type={stitches} setType={setStitches}/>
-      <Counter typeName='rows' type={rows} setType={setRows}/>
-      <Timer/>
+      <h1>Crochet Counter</h1>      
+      
+      <button className="option-btn" onClick={() => setDisplayOptions({...displayOptions, stitches:!displayOptions.stitches})}>stitches</button>
+      <button className="option-btn" onClick={() => setDisplayOptions({...displayOptions, rows:!displayOptions.rows})}>rows</button>
+      <button className="option-btn" onClick={() => setDisplayOptions({...displayOptions, timer:!displayOptions.timer})}>timer</button>
+
+      {displayOptions.stitches && <Counter typeName='stitches' type={stitches} setType={setStitches}/>}
+      {displayOptions.rows && <Counter typeName='rows' type={rows} setType={setRows}/>}
+      {displayOptions.timer && <Timer/>}
     </>
   )
 }
