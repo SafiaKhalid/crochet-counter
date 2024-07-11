@@ -6,6 +6,11 @@ import Timer from './Timer'
 function App() {
   const [stitches, setStitches] = useState(0)
   const [rows, setRows] = useState(0)
+  const [displayOptions, setDisplayOptions] = useState({
+    stitches:true,
+    rows:true,
+    timer:true
+  })
 
   return (
     <>
