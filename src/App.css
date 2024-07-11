@@ -4,3 +4,54 @@
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
 }
+
+body {
+    width: 100%;
+    height: 100vh;    
+}
+
+body #root {
+    height: 100%;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#root main {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+main h1 {
+    margin-bottom: 50px;
+    font-size: 3rem;
+}
+
+#root main .btn-container{
+    display: flex;
+    gap: 30px;
+}
+
+main .btn {
+    background: none;
+    border: none;
+}
+
+main .btn-container {
+    margin-bottom: 50px;
+}
+
+.btn-container .option-btn {
+    font-size: 2rem;
+}
+
+.btn-container .option-btn.displayed{
+    text-decoration: underline;
+}
+
+main .counter-container {
+    display: flex;
+    gap: 10px;
+}
