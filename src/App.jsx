@@ -1,12 +1,13 @@
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import './App.css'
 import Counter from './Counter'
 import Timer from './Timer'
 
 function App() {
-  const [stitches, setStitches] = useState(0)
-  const [rows, setRows] = useState(0)
-  const [time, setTime] = useState(0)
+  /* const [stitches, setStitches] = useState(0) */
+  const [stitches, setStitches] = useState(Number(localStorage.getItem('localStitches')))
+  const [rows, setRows] = useState(Number(localStorage.getItem('localRows')))
+  const [time, setTime] = useState(Number(localStorage.getItem('localTime')))
   const [displayOptions, setDisplayOptions] = useState({
     stitches:true,
     rows:true,
@@ -14,11 +15,26 @@ function App() {
   })
   
   const setLocalStorage = () => {
-    localStorage.setItem(localStitches,stitches)
-    localStorage.setItem(localRows,rows)
-    localStorage.setItem(localStitches,stitches)
+    localStorage.setItem('localStitches',stitches)
+    localStorage.setItem('localRows',rows)
+    localStorage.setItem('localTime',time)
   }
 
+  useEffect(() => {
+    if (!stitches) {
+      setStitches(0)      
+    }
+    if (!rows) {
+      setRows(0)
+    }
+    if(!time) {
+      setTime(0)
+    }
+    setLocalStorage()
+    
+  },[stitches,rows,time])
+
+  console.log(localStorage)
 
   return (
     <>
