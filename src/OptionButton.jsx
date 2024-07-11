@@ -1,8 +1,8 @@
 import React from "react";
 
-const OptionButton = ({typeName}) => {
-    const toggleDisplay = () => {
-        console.log(typeName)
+const OptionButton = ({typeName, type, setType}) => {
+    const toggleDisplay = () => {                
+        setType({...type, [typeName]:![`type.${typeName}`]})                
     }
 
     return <button className="option-btn" onClick={toggleDisplay}>{typeName}</button>    

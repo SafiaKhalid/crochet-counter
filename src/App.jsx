@@ -16,12 +16,9 @@ function App() {
   return (
     <>
       <h1>Crochet Counter</h1>
-      {/* <button className='option-btn'>stitches</button>
-      <button className='option-btn'>rows</button>
-      <button className='option-btn'>timer</button> */}
-      <OptionButton typeName='stitches' />
-      <OptionButton typeName='rows'/>
-      <OptionButton typeName='timer'/>
+      <OptionButton typeName='stitches' type={displayOptions} setType={setDisplayOptions}/>
+      <OptionButton typeName='rows' type={displayOptions} setType={setDisplayOptions}/>
+      <OptionButton typeName='timer' type={displayOptions} setType={setDisplayOptions}/>
       <Counter typeName='stitches' type={stitches} setType={setStitches}/>
       <Counter typeName='rows' type={rows} setType={setRows}/>
       <Timer/>
