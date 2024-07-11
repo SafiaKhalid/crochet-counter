@@ -1,16 +1,16 @@
-import { useState,useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import './App.css'
 import Counter from './Counter'
 import Timer from './Timer'
 
 function App() {  
-  const [stitches, setStitches] = useState(Number(localStorage.getItem('localStitches')))
-  const [rows, setRows] = useState(Number(localStorage.getItem('localRows')))
-  const [time, setTime] = useState(Number(localStorage.getItem('localTime')))
+  const [stitches, setStitches] = useState(localStorage.getItem('localStitches') !== null ? Number(localStorage.getItem('localStitches')) : 0)
+  const [rows, setRows] = useState(localStorage.getItem('localRows') !== null ? Number(localStorage.getItem('localRows')) : 0)
+  const [time, setTime] = useState(localStorage.getItem('localTime') !== null ? Number(localStorage.getItem('localTime')) : 0)
 
 
 
-  const [displayOptions, setDisplayOptions] = useState(localStorage.getItem('localDisplayOptions') !== null? JSON.parse(localStorage.getItem('localDisplayOptions')) : {
+  const [displayOptions, setDisplayOptions] = useState(localStorage.getItem('localDisplayOptions') !== null ? JSON.parse(localStorage.getItem('localDisplayOptions')) : {
     stitches:true,
     rows:true,
     timer:true
@@ -24,19 +24,9 @@ function App() {
   }
 
   useEffect(() => {
-    if (!stitches) {
-      setStitches(0)      
-    }
-    if (!rows) {
-      setRows(0)
-    }
-    if(!time) {
-      setTime(0)
-    }
-    setLocalStorage()
-    
+    setLocalStorage()    
   },[stitches,rows,time,displayOptions])
-  
+
   return (
     <>
       <h1>Crochet Counter</h1>      
