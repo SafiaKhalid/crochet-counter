@@ -1,8 +1,7 @@
 import React, {useState, useEffect} from "react";
 
 
-const Timer = () => {
-    const [time, setTime] = useState(0)
+const Timer = ({time, setTime}) => {    
     const [timerStart, setTimerStart] = useState(false)
     
     let timerInterval

@@ -6,6 +6,7 @@ import Timer from './Timer'
 function App() {
   const [stitches, setStitches] = useState(0)
   const [rows, setRows] = useState(0)
+  const [time, setTime] = useState(0)
   const [displayOptions, setDisplayOptions] = useState({
     stitches:true,
     rows:true,
@@ -29,7 +30,7 @@ function App() {
 
       {displayOptions.stitches && <Counter typeName='stitches' type={stitches} setType={setStitches}/>}
       {displayOptions.rows && <Counter typeName='rows' type={rows} setType={setRows}/>}
-      {displayOptions.timer && <Timer/>}
+      {displayOptions.timer && <Timer time={time} setTime={setTime}/>}
     </>
   )
 }
