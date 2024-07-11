@@ -13,10 +13,10 @@ const Counter = ({typeName, type, setType}) => {
         setType(0)
     }
 
-    return <section>{typeName}: {type}
+    return <section className={typeName}>{typeName}: {type}
         <button className="counter-btn" onClick={decrease}>-</button>
         <button className="counter-btn" onClick={increase}>+</button>
-        <button className="reset-btn" onClick={reset}>reset</button>
+        <button className="function-btn" onClick={reset}>reset</button>
     </section>
 }
 
