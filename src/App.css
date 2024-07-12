@@ -61,7 +61,7 @@ main .counter-container {
     align-items: center;
     gap: 10px;
     font-size: 2rem;
-
+    margin-bottom: 50px;
 }
 
 .counter-container .counter-btn {
@@ -78,5 +78,19 @@ main .counter-container {
 } 
 
 .counter-container .btn:hover:not(.disabled-btn) {
+    color: grey;
+}
+
+main .timer {
+    display: flex;
+    gap: 20px;
+    font-size: 2rem;
+}
+
+.timer .function-btn {
+    font-size: 1.5rem;
+}
+
+.timer .function-btn:hover {
     color: grey;
 }
