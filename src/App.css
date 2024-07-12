@@ -37,6 +37,7 @@ main h1 {
 main .btn {
     background: none;
     border: none;
+    cursor: pointer;
 }
 
 main .btn-container {
@@ -44,7 +45,11 @@ main .btn-container {
 }
 
 .btn-container .option-btn {
-    font-size: 2rem;
+    font-size: 2rem;    
+}
+
+.btn-container .option-btn:hover {
+    color: red;
 }
 
 .btn-container .option-btn.displayed{
@@ -53,5 +58,25 @@ main .btn-container {
 
 main .counter-container {
     display: flex;
+    align-items: center;
     gap: 10px;
+    font-size: 2rem;
+
+}
+
+.counter-container .counter-btn {
+    font-size: 2rem;
+}
+
+.counter-container .function-btn {
+    font-size: 1.5rem;
+}
+
+.counter-container .counter-btn.disabled-btn {
+    color: orange;
+    cursor: default;
+} 
+
+.counter-container .btn:hover:not(.disabled-btn) {
+    color: grey;
 }
