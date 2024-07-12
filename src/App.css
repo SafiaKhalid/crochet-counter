@@ -1,6 +1,5 @@
 :root {
-    /* --bckground-clr: rgb(250, 200, 205); */
-    --bckground-clr: red;
+    --bckground-clr: rgb(250, 200, 205);
     --txt-clr: rgb(45, 45, 42);
     --txt-hover: rgb(107, 107, 102);
     --txt-disabled: rgb(146, 170, 131);
@@ -110,4 +109,15 @@ main .timer {
     display: flex;
     width: 200px;
     justify-content: space-between;
+}
+
+@media only screen and (max-width:420px) {    
+    main h1 {
+        text-align: center;
+    }
+    
+    main .timer {        
+        flex-direction: column;
+        align-items: center;
+    }
 }
