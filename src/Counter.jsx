@@ -2,7 +2,9 @@ import React from "react";
 
 const Counter = ({typeName, type, setType}) => {    
     const decrease = () => {       
-        setType(type-1)
+        if (type>0) {
+            setType(type-1)
+        }   
     }
     
     const increase = () => {
