@@ -28,17 +28,19 @@ function App() {
   },[stitches,rows,time,displayOptions])
 
   return (
-    <>
+    <main>
       <h1>Crochet Counter</h1>      
       
-      <button className="option-btn" onClick={() => setDisplayOptions({...displayOptions, stitches:!displayOptions.stitches})}>stitches</button>
-      <button className="option-btn" onClick={() => setDisplayOptions({...displayOptions, rows:!displayOptions.rows})}>rows</button>
-      <button className="option-btn" onClick={() => setDisplayOptions({...displayOptions, timer:!displayOptions.timer})}>timer</button>
+      <section className='btn-container'>
+        <button className={"btn option-btn " + (displayOptions.stitches && 'displayed')} onClick={() => setDisplayOptions({...displayOptions, stitches:!displayOptions.stitches})}>stitches</button>
+        <button className={"btn option-btn " + (displayOptions.rows && 'displayed')} onClick={() => setDisplayOptions({...displayOptions, rows:!displayOptions.rows})}>rows</button>
+        <button className={"btn option-btn " + (displayOptions.timer && 'displayed')} onClick={() => setDisplayOptions({...displayOptions, timer:!displayOptions.timer})}>timer</button>
+      </section>      
 
       {displayOptions.stitches && <Counter typeName='stitches' type={stitches} setType={setStitches}/>}
       {displayOptions.rows && <Counter typeName='rows' type={rows} setType={setRows}/>}
       {displayOptions.timer && <Timer time={time} setTime={setTime}/>}
-    </>
+    </main>
   )
 }
 

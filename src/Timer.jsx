@@ -24,11 +24,13 @@ const Timer = ({time, setTime}) => {
     }, [timerStart, time])    
 
     return <section className="timer">
+        <div className="time">
         <p>{Math.floor(time /3600)} h</p>    
         <p>{Math.floor((time%3600)/60)} m</p>    
-        <p>{Math.floor(time %60)} s</p>
-        <button className="function-btn" onClick={() => setTimerStart(!timerStart)}>{timerStart? 'pause':'start'}</button>        
-        <button className="function-btn" onClick={resetTimer}>reset</button>
+        <p>{Math.floor(time %60)} s</p>        
+        </div>
+        <button className="btn function-btn" onClick={() => setTimerStart(!timerStart)}>{timerStart? 'pause':'start'}</button>        
+        <button className=" btn function-btn" onClick={resetTimer}>reset</button>
     </section>
 }
 
