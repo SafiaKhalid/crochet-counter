@@ -1,5 +1,6 @@
 :root {
-    --bckground-clr: rgb(250, 200, 205);
+    /* --bckground-clr: rgb(250, 200, 205); */
+    --bckground-clr: red;
     --txt-clr: rgb(45, 45, 42);
     --txt-hover: rgb(107, 107, 102);
     --txt-disabled: rgb(146, 170, 131);
