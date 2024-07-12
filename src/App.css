@@ -1,13 +1,22 @@
+:root {
+    --bckground-clr: rgb(250, 200, 205);
+    --txt-clr: rgb(45, 45, 42);
+    --txt-hover: rgb(107, 107, 102);
+    --txt-disabled: rgb(146, 170, 131);
+}
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: "Montserrat", sans-serif;
+    color: var(--txt-clr);
 }
 
 body {
     width: 100%;
-    height: 100vh;    
+    height: 100vh;
+    background-color: var(--bckground-clr);    
 }
 
 body #root {
@@ -49,7 +58,7 @@ main .btn-container {
 }
 
 .btn-container .option-btn:hover {
-    color: red;
+    color: var(--txt-hover);
 }
 
 .btn-container .option-btn.displayed{
@@ -73,18 +82,19 @@ main .counter-container {
 }
 
 .counter-container .counter-btn.disabled-btn {
-    color: orange;
+    color: var(--txt-disabled);
     cursor: default;
 } 
 
 .counter-container .btn:hover:not(.disabled-btn) {
-    color: grey;
+    color: var(--txt-hover);
 }
 
 main .timer {
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
     font-size: 2rem;
+    width: 400px;
 }
 
 .timer .function-btn {
@@ -92,5 +102,11 @@ main .timer {
 }
 
 .timer .function-btn:hover {
-    color: grey;
+    color: var(--txt-hover);
+}
+
+.timer .time {
+    display: flex;
+    width: 200px;
+    justify-content: space-between;
 }
