@@ -24,12 +24,17 @@ const Timer = ({time, setTime}) => {
         timerInterval = null
     }
 
-  /*   const resetTimer = () => {    
-        pauseTimer()
+    const resetTimer = () => {    
+        clearInterval(timerInterval)
         setTimerStart(false)
+        setTime(null)
         setPausedTime(0)
-        setTime(0)
-    } */
+        setTimeComponents({
+            secs: 0,
+            mins: 0,
+            hrs: 0
+        })
+    }
 
     const updateTimer = () => {
         let currentTime = new Date().getTime()
@@ -68,7 +73,7 @@ const Timer = ({time, setTime}) => {
         <p>{timeComponents.secs} s</p>                
         </div>
         <button className="btn function-btn" onClick={timeCheck}>{timerStart? 'pause':'start'}</button>        
-        {/* <button className=" btn function-btn" onClick={resetTimer}>reset</button> */}        
+        <button className=" btn function-btn" onClick={resetTimer}>reset</button>        
     </section>
 }
 
