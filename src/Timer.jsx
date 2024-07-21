@@ -13,16 +13,16 @@ const Timer = ({time, setTime}) => {
     let timerInterval
 
     const startTimer = async () => {
-        setStartTime(new Date().getTime()/*  - pausedTime */)
+        setStartTime(new Date().getTime() - pausedTime)
         
         timerInterval = setInterval(updateTimer,1000)
     }
 
-/*     const pauseTimer = () => {
+    const pauseTimer = () => {
         clearInterval(timerInterval)
-        setPausedTime(new Date().getTime() - startTime)
+        setPausedTime(new Date().getTime() - startTime)        
         timerInterval = null
-    } */
+    }
 
   /*   const resetTimer = () => {    
         pauseTimer()
@@ -43,12 +43,22 @@ const Timer = ({time, setTime}) => {
         })    
     }
 
+    const timeCheck = () => {
+        setTimerStart(!timerStart)
+
+        if (timerStart) {
+            pauseTimer()
+        }
+    }
+
     useEffect(() => {
         if (timerStart) {
             startTimer()   
-        } /* else {
-            pauseTimer()
-        } */
+        } 
+       
+        return () => {
+            clearInterval(timerInterval)
+        }
     }, [timerStart, time, startTime])    
 
     return <section className="timer">
@@ -57,9 +67,8 @@ const Timer = ({time, setTime}) => {
         <p>{timeComponents.mins} m</p>    
         <p>{timeComponents.secs} s</p>                
         </div>
-        <button className="btn function-btn" onClick={() => setTimerStart(!timerStart)}>{timerStart? 'pause':'start'}</button>        
-        {/* <button className=" btn function-btn" onClick={resetTimer}>reset</button> */}
-        <p>{Math.floor(startTime / 1000 /60 /60) %  60} time</p>
+        <button className="btn function-btn" onClick={timeCheck}>{timerStart? 'pause':'start'}</button>        
+        {/* <button className=" btn function-btn" onClick={resetTimer}>reset</button> */}        
     </section>
 }
 
