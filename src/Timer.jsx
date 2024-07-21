@@ -1,36 +1,79 @@
-import React, {useState, useEffect} from "react";
+import {useState, useEffect} from "react";
 
 
 const Timer = ({time, setTime}) => {    
-    const [timerStart, setTimerStart] = useState(false)    
+    const [timerStart, setTimerStart] = useState(false)   
+    const [startTime, setStartTime] = useState(null)
+    const [pausedTime, setPausedTime] = useState(0)
+    const [timeComponents, setTimeComponents] = useState({
+        secs: 0,
+        mins: 0,
+        hrs: 0
+    })
     let timerInterval
 
-    const startTimer = () => {
-        timerInterval = setInterval(() => {
-            setTime(time+1)
-        },1000)
+    const startTimer = async () => {
+        setStartTime(new Date().getTime() - pausedTime)
+        
+        timerInterval = setInterval(updateTimer,1000)
+    }
+
+    const pauseTimer = () => {
+        clearInterval(timerInterval)
+        setPausedTime(new Date().getTime() - startTime)        
+        timerInterval = null
     }
 
     const resetTimer = () => {    
+        clearInterval(timerInterval)
         setTimerStart(false)
-        setTime(0)
+        setTime(null)
+        setPausedTime(0)
+        setTimeComponents({
+            secs: 0,
+            mins: 0,
+            hrs: 0
+        })
+    }
+
+    const updateTimer = () => {
+        let currentTime = new Date().getTime()
+        
+        let calculatedTime = currentTime - startTime
+        
+        setTimeComponents({
+            secs: Math.floor(calculatedTime / 1000) %  60,
+            mins: Math.floor(calculatedTime / 1000 / 60) %  60,
+            hrs: Math.floor(calculatedTime / 1000 / 60 / 60) %  60
+        })    
+    }
+
+    const timeCheck = () => {
+        setTimerStart(!timerStart)
+
+        if (timerStart) {
+            pauseTimer()
+        }
     }
 
     useEffect(() => {
         if (timerStart) {
-            startTimer()
-            return () => clearInterval(timerInterval)
-        }    
-    }, [timerStart, time])    
+            startTimer()   
+        } 
+       
+        return () => {
+            clearInterval(timerInterval)
+        }
+    }, [timerStart, time, startTime])    
 
     return <section className="timer">
         <div className="time">
-        <p>{Math.floor(time /3600)} h</p>    
-        <p>{Math.floor((time%3600)/60)} m</p>    
-        <p>{Math.floor(time %60)} s</p>        
+        <p>{timeComponents.hrs} h</p>    
+        <p>{timeComponents.mins} m</p>    
+        <p>{timeComponents.secs} s</p>                
         </div>
-        <button className="btn function-btn" onClick={() => setTimerStart(!timerStart)}>{timerStart? 'pause':'start'}</button>        
-        <button className=" btn function-btn" onClick={resetTimer}>reset</button>
+        <button className="btn function-btn" onClick={timeCheck}>{timerStart? 'pause':'start'}</button>        
+        <button className=" btn function-btn" onClick={resetTimer}>reset</button>        
     </section>
 }
 
