@@ -95,6 +95,7 @@ main .timer {
     justify-content: space-between;
     font-size: 2rem;
     width: 400px;
+    gap: 20px;
 }
 
 .timer .function-btn {
@@ -106,9 +107,16 @@ main .timer {
 }
 
 .timer .time {
-    display: flex;
-    width: 200px;
+    display: flex;    
     justify-content: space-between;
+}
+
+.time p {
+    width: 6rem;    
+}
+
+.time .hours {    
+    width: 7rem;
 }
 
 @media only screen and (max-width:420px) {    

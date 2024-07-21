@@ -68,9 +68,9 @@ const Timer = ({time, setTime}) => {
 
     return <section className="timer">
         <div className="time">
-        <p>{timeComponents.hrs} h</p>    
-        <p>{timeComponents.mins} m</p>    
-        <p>{timeComponents.secs} s</p>                
+            <p className="hours">{timeComponents.hrs>9 ? (timeComponents.hrs>99 ? timeComponents.hrs : `0${timeComponents.hrs}`) : `00${timeComponents.hrs}`} h</p>    
+            <p className="minutes">{timeComponents.mins>9 ? timeComponents.mins : `0${timeComponents.mins}`} m</p>    
+            <p className="seconds">{timeComponents.secs>9 ? timeComponents.secs : `0${timeComponents.secs}`} s</p>                
         </div>
         <button className="btn function-btn" onClick={timeCheck}>{timerStart? 'pause':'start'}</button>        
         <button className=" btn function-btn" onClick={resetTimer}>reset</button>        
